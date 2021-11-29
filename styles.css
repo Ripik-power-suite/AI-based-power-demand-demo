@@ -1,0 +1,159 @@
+body {
+	margin: auto;
+	font-family: Heebo;
+	line-height: 19px;	
+}
+
+.topnav {
+	height: 55px;
+	background-color: #222;
+	overflow: hidden;
+}
+
+.logo {
+  display: inline-block;
+  float: left;
+  height: 60px;
+  width: auto;
+  transform: translateY(-22px);
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 20px 24px;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.choose-option {
+	float: left;
+	border-radius: 10px;
+	box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.2);
+	padding: 5px;
+}
+
+.container {
+	width: 100%;
+	display: flex;
+}
+
+.card {
+	width: 30%;
+	height: 590px;
+	border-radius: 10px;
+	margin: auto;
+	padding: 20px;
+	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+	text-align: center;
+}
+
+input[type="radio"] {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	transform: translateY(5px) translateX(5px);
+}
+
+input[type="range"] {
+	width: 100%;
+	margin: auto;
+}
+
+.slider {
+	-webkit-appearance: none;
+	background: #fff;
+	border: 4px solid #0075FF;
+	border-radius: 10px;
+	height: 8px;
+	outline: none;
+	transform: translateY(0.8em);
+}
+
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	border: 4px solid #0075FF;
+	background: #fff;
+}
+
+.pointer::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	border: 0px;
+	background: rgba(32,32,32,0.7);
+}
+
+.pointer:disabled {
+	transform: translateY(-0.9em);
+	height: 8px;
+	-webkit-appearance: none;
+	background: rgba(0, 0, 0, 0);
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: rgba(32,32,32,0.7);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+label {
+	padding: 5px;
+	font-size: 20px;
+	margin-bottom: 2px;
+}
+
+form {
+	margin: auto;
+	padding: 10px;
+}
+
+canvas {
+	width:70%;
+	padding: 10px 10px;
+}
+
+.small-graph {
+	display: inline-flex;
+	justify-content: space-around;
+	width: 70%;
+	padding: 10px;
+}
+
+.circle {
+	width: 20%;
+	line-height: 14px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #000;
+	border-radius: 30px;
+	padding: 10px;
+	text-align: center;
+	margin: auto;
+}
+
+button {
+	color: #fff;
+	font-size: 20px;
+	font-weight: bolder;
+	width: 40%;
+	border: none;
+	background-color: rgba(0, 117, 255, 0.9);
+	border-radius: 30px;
+	padding: 10px;
+	margin: auto;
+}
+
+button:hover {
+	background-color: rgba(0, 117, 255, 1);
+	cursor: pointer;
+}
