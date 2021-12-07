@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ripik.ai</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://fonts.googleapis.com/css?family=Heebo' rel='stylesheet'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+<body>
+  <div class="topnav">
+    <a class="active" style="float: left; padding: 10px 20px; font-size: 25px;">
+      AI based Power Demand Demo
+    </a>
+    <a class="active" style="float: right; padding: 15px 20px; font-size: 20px; color: rgb(77, 172, 219);">
+      <img class="logo" src="RipikLogoTransparent.png">Ripik.ai
+    </a>
+  </div>
+
+  <div class="choose-option">
+    <form id="scenario" oninput="makeSliders();">
+      <input type="radio" name="xyz" id="scenario1" value=1 checked="true">
+      <label>30% Accurate prediction model</label>
+      <input type="radio" name="xyz" id="scenario2" value=2>
+      <label>80% Accurate prediction model</label>
+      <input type="radio" name="xyz" id="scenario3" value=3>
+      <label>Try it out!</label>
+    </form>
+  </div>
+
+  <div class="container" style="width: 95%; justify-content: space-evenly;">
+    <div style="width: 40%;">
+      <div class="card">
+        <h1 style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+          Power cost (IEX & Grid)
+        </h1>
+        <div style="width: 80%; margin: auto;">
+          <canvas id="powerCost" height="3" width="4" style="padding: 10px 10px;"></canvas>
+        </div>
+        <h3 id="knowMore" onclick="showInfo();">Know More</h3>
+        <div id="video">
+          <div class="card" style="width: 40%; display: grid;">
+            <h2 style="color: rgb(30, 67, 150);">Seasonal trends of power costs from IEX</h2>
+            <video width="70%" muted autoplay loop style="margin: auto;">
+              <source src="intra_day_variation.mp4" type="video/mp4">
+              Could not load video
+            </video>
+            <h3 id="knowMore" onclick="hideInfo();">Close</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 30%;">
+      <div class="card">
+        <h1 style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+          Power consumption
+        </h1>
+          <h3 style="color: #a2a2a2;">(across 4 hour time intervals)</h3>
+        <form>
+          <div class="container">
+            <label style="width: 110px;">0 to 4 hrs</label>
+            <div style="width: 360px">
+              <input type="range" step="1" min="0" max="100" value="50" class="slider" id="0h">
+              <input type="range" step="1" min="0" max="100" value="75" class="pointer" id="0hfix">
+            </div>
+          </div>
+          <div class="container">
+            <label style="width: 110px;">4 to 8 hrs</label>
+            <div style="width: 360px">
+              <input type="range" step="1" min="0" max="100" value="50" class="slider" id="4h">
+              <input type="range" step="1" min="0" max="100" value="85" class="pointer" id="4hfix">
+            </div>
+          </div>
+          <div class="container">
+            <label style="width: 110px;">8 to 12 hrs</label>
+            <div style="width: 360px">
+              <input type="range" step="1" min="0" max="100" value="50" class="slider" id="8h">
+              <input type="range" step="1" min="0" max="100" value="70" class="pointer" id="8hfix">
+            </div>
+          </div>
+          <div class="container">
+            <label style="width: 110px;">12 to 16 hrs</label>
+            <div style="width: 360px">
+              <input type="range" step="1" min="0" max="100" value="50" class="slider" id="12h">
+              <input type="range" step="1" min="0" max="100" value="73" class="pointer" id="12hfix">
+            </div>
+          </div>
+          <div class="container">
+            <label style="width: 110px;">16 to 20 hrs</label>
+            <div style="width: 360px">
+              <input type="range" step="1" min="0" max="100" value="50" class="slider" id="16h">
+              <input type="range" step="1" min="0" max="100" value="78" class="pointer" id="16hfix">
+            </div>
+          </div>
+          <div class="container">
+            <label style="width: 110px;">20 to 24 hrs</label>
+            <div style="width: 360px">
+              <input type="range" step="1" min="0" max="100" value="50" class="slider" id="20h">
+              <input type="range" step="1" min="0" max="100" value="80" class="pointer" id="20hfix">
+            </div>
+          </div>
+        </form>
+        <div style="transform: translateY(-25px);">
+          <h3 id="legend"><span class="dot" style="transform: translateY(0.3em);"></span> Actual power demand</h3>
+        </div>
+        <div class="container">
+          <button id="btn" onclick="onSubmit();">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 30%;">
+      <div class="card">
+        <h1 style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+          Analytics
+        </h1>
+        <h3 id="vol">Volume</h3>
+        <canvas id="chart1" height="4" width="20"></canvas>
+        <h4 id="alert" style="width: 70%; color: #a2a2a2; margin: auto;">
+          Data appears for the new input here after clicking "submit"
+        </h4>
+        <h3 id="avgSpend">Spend per unit</h3>
+        <canvas id="chart2" height="4" width="20"></canvas>
+        <div id="spend"><h3>Total spend</h3><div>
+        <canvas id="chart3" height="6" width="20"></canvas>
+        <div class ="circle" id="circle1"></div>
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
